@@ -1,21 +1,15 @@
-#! /usr/bin/env python
-# 
-# генератор паролей
-# использование: pass.py
-# 
-
 import random
+from string import ascii_letters, digits
 
-# Список символов для пароля
-chars = list('1234567890abcdefghijklmnopqrstuvyxwzABCDEFGHIJKLMNOPQRSTUVYXWZ')
-# Начальное значения pasw
-pasw = ''
-# Запрос длинны пароля
-length = int(input('Длинна парля '))
 
-random.shuffle(chars) #Перемешиваем список символов для пароля
+def password_gen(length):
+    chars = ascii_letters + digits
+    pass_str = ' '
+    for x in range(length):
+        pass_str = pass_str + random.choice(chars)
+    return pass_str
 
-for x in range(length):
-    pasw = pasw + random.choice(chars)
 
-print(pasw)
+password_len = int(input('Длинна пароля '))
+password = password_gen(password_len)
+print(password)
